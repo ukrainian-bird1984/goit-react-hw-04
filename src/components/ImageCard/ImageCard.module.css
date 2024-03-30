@@ -1,0 +1,11 @@
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.image:hover {
+    opacity: 0.8;
+}
