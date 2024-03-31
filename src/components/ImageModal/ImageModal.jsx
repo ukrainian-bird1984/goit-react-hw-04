@@ -1,3 +1,5 @@
+import ReactModal from 'react-modal';
+
 const ImageModal = ({ images }) => {
   const { urls, alt_description } = images;
   return (

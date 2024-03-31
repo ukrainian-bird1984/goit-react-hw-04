@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { requesForImages } from "./helpers/api";
 import SearchBar from "./components/SearchBar/SearchBar";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
@@ -32,7 +32,11 @@ const App = () => {
       try {
         setIsLoading(true);
         const data = await requesForImages(query, page);
-        setImages((prevImages) => [...prevImages, ...data.results]);
+        if (page === 1) {
+          setImages(data.results);
+        } else {
+          setImages((prevImages) => [...prevImages, ...data.results]);
+        }
       } catch (error) {
         setIsError(true);
       } finally {
@@ -53,6 +57,7 @@ const App = () => {
 
   const handleSearch = (data) => {
     setPage(1);
+    setImages([]);
     setQuery(data);
   };
 
@@ -60,6 +65,7 @@ const App = () => {
     setPage(page + 1);
     animateScroll.scrollMore(470, options);
   };
+
   return (
     <>
       <SearchBar onSearch={handleSearch} />
