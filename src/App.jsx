@@ -33,7 +33,7 @@ const App = () => {
         setIsLoading(true);
         const data = await requesForImages(query, page);
         if (page === 1) {
-          setImages(data.results);
+           setImages(data.results);
         } else {
           setImages((prevImages) => [...prevImages, ...data.results]);
         }
